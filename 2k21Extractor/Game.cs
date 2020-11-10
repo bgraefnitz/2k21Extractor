@@ -27,10 +27,10 @@ namespace _2k21Extractor
                     _lastQuarterWithTime = value;
             }
         }
-        public const Int64 QuarterModifier = 0x3AD790C;
-        public const Int64 SecondsRemainingModifier = 0x3AD7910;
+        public const Int64 QuarterModifier = 0x3AD892C;
+        public const Int64 SecondsRemainingModifier = 0x3AD8930;
         public const Int64 PlayerWithBallModifier = 0x1348;
-        public const Int64 ScoreModifier = 0x3AD7E58;
+        public const Int64 ScoreModifier = 0x3AD8E78;
 
         public Int64 QuarterPointer;
         public Int64 SecondsRemainingPointer;

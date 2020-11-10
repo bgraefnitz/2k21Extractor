@@ -251,14 +251,8 @@ namespace _2k21Extractor
                 _game.Teams.Clear();
                 
                 //                               Score                   OnFloor                 Team Name               Num Players               Base Players               Def Settings
-                _game.Teams.Add(new Team("Away",   528, _baseAddress + 0x4CE2328, _baseAddress + 0x5C8567C, _baseAddress + 0x5C85E79, _baseAddress + 0x5C853C8, _baseAddress + 0x5163A5C));//num players is base pointer plus AB1
-                _game.Teams.Add(new Team("Home", -1400, _baseAddress + 0x4CE2350, _baseAddress + 0x5C84624, _baseAddress + 0x5C84E21, _baseAddress + 0x5C84370, _baseAddress + 0x51639C0));//num players is base pointer plus AB1
-
-                /*2k19
-                //                                              Score                       OnFloor                 Team Name               Num Players               Base Players               Def Settings
-                _game.Teams.Add(new Team("Away", _baseAddress + 0x5C29BA0, _baseAddress + 0x5BB8DC8, _baseAddress + 0x515B43C, _baseAddress + 0x5C33B20, _baseAddress + 0x5C32D78, _baseAddress + 0x5163A5C));//num players is base pointer plus DA8
-                _game.Teams.Add(new Team("Home", _baseAddress + 0x5C29490, _baseAddress + 0x5BB8DC0, _baseAddress + 0x515A5E4, _baseAddress + 0x5C31CE8, _baseAddress + 0x5C30F40, _baseAddress + 0x51639C0));//num players is base pointer plus DA8
-                */
+                _game.Teams.Add(new Team("Away",   528, _baseAddress + 0x4CE3328, _baseAddress + 0x5C8667C, _baseAddress + 0x5C86E79, _baseAddress + 0x5C863C8, _baseAddress + 0x5163A5C));//num players is base pointer plus AB1
+                _game.Teams.Add(new Team("Home", -1400, _baseAddress + 0x4CE3350, _baseAddress + 0x5C85624, _baseAddress + 0x5C85EF1, _baseAddress + 0x5C85440, _baseAddress + 0x51639C0));//num players is base pointer plus AB1
 
                 foreach (var team in _game.Teams)
                 {
