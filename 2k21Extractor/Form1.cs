@@ -63,7 +63,7 @@ namespace _2k21Extractor
                 new Offset("SecondChancePoints",22268,StatDataType.TwoByteInt),
                 new Offset("FastBreakPoints",22266,StatDataType.TwoByteInt),
                 new Offset("PointsOffTurnovers",22250,StatDataType.TwoByteInt),
-                new Offset("Dunks",23284,StatDataType.TwoByteInt)
+                new Offset("Dunks",22272,StatDataType.TwoByteInt)
             };
 
         readonly List<Offset> _strategyOffsets = new List<Offset>
@@ -251,8 +251,8 @@ namespace _2k21Extractor
                 _game.Teams.Clear();
                 
                 //                               Score                   OnFloor                 Team Name               Num Players               Base Players               Def Settings
-                _game.Teams.Add(new Team("Away",   528, _baseAddress + 0x4CE3328, _baseAddress + 0x5C8667C, _baseAddress + 0x5C86E79, _baseAddress + 0x5C863C8, _baseAddress + 0x5163A5C));//num players is base pointer plus AB1
-                _game.Teams.Add(new Team("Home", -1400, _baseAddress + 0x4CE3350, _baseAddress + 0x5C85624, _baseAddress + 0x5C85EF1, _baseAddress + 0x5C85440, _baseAddress + 0x51639C0));//num players is base pointer plus AB1
+                _game.Teams.Add(new Team("Away",   528, _baseAddress + 0x4CE5AA8, _baseAddress + 0x5C88DFC, _baseAddress + 0x5C895F9, _baseAddress + 0x5C88B48, _baseAddress + 0x5163A5C));//num players is base pointer plus AB1
+                _game.Teams.Add(new Team("Home", -1400, _baseAddress + 0x4CE5AD0, _baseAddress + 0x5C87DA4, _baseAddress + 0x5C885A1, _baseAddress + 0x5C87AF0, _baseAddress + 0x51639C0));//num players is base pointer plus AB1
 
                 foreach (var team in _game.Teams)
                 {
