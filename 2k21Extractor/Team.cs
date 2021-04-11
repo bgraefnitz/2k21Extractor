@@ -153,14 +153,14 @@ namespace _2k21Extractor
         }
 
 
-        public Team(string homeAway, Int64 finalScoreOffset, Int64 playersOnFloorPointer, Int64 namePointer, Int64 numPlayersPointer, Int64 basePlayerPointer, Int64 defensiveSettingsPointer)
+        public Team(string homeAway, Int64 finalScoreOffset, Int64 playersOnFloorPointer, Int64 namePointer, Int64 defensiveSettingsPointer)
         {
             HomeAway = homeAway;
             FinalScoreOffset = finalScoreOffset;
             PlayersOnFloorPointer = playersOnFloorPointer;
             NamePointer = namePointer;
-            NumPlayersPointer = numPlayersPointer;
-            BasePlayerPointer = basePlayerPointer;
+            BasePlayerPointer = namePointer - 0x2B4;
+            NumPlayersPointer = BasePlayerPointer + 0xAB1;
             DefensiveSettingsPointer = defensiveSettingsPointer;
             Players = new List<Player>();
             Score = new Score();

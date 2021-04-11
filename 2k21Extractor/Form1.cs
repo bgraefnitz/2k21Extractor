@@ -250,9 +250,9 @@ namespace _2k21Extractor
                 //Adding Away team first so that we can loop through the teams without worrying about Home/Away because Away is always shown first
                 _game.Teams.Clear();
                 
-                //                               Score                   OnFloor                 Team Name               Num Players               Base Players               Def Settings
-                _game.Teams.Add(new Team("Away",   528, _baseAddress + 0x4CE5AA8, _baseAddress + 0x5C88DFC, _baseAddress + 0x5C895F9, _baseAddress + 0x5C88B48, _baseAddress + 0x5163A5C));//num players is base pointer plus AB1 and name is base plus 2B4
-                _game.Teams.Add(new Team("Home", -1400, _baseAddress + 0x4CE5AD0, _baseAddress + 0x5C87DA4, _baseAddress + 0x5C885A1, _baseAddress + 0x5C87AF0, _baseAddress + 0x51639C0));//num players is base pointer plus AB1 and name is base plus 2B4
+                //                               Score                   OnFloor                 Team Name               Def Settings
+                _game.Teams.Add(new Team("Away",   528, _baseAddress + 0x4CEC508, _baseAddress + 0x5C8F7FC, _baseAddress + 0x5163A5C));
+                _game.Teams.Add(new Team("Home", -1400, _baseAddress + 0x4CEC530, _baseAddress + 0x5C8E7A4, _baseAddress + 0x51639C0));
 
                 foreach (var team in _game.Teams)
                 {
