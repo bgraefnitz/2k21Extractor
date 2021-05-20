@@ -251,8 +251,8 @@ namespace _2k21Extractor
                 _game.Teams.Clear();
                 
                 //                               Score                   OnFloor                 Team Name               Def Settings
-                _game.Teams.Add(new Team("Away",   528, _baseAddress + 0x4CEC508, _baseAddress + 0x5C8F7FC, _baseAddress + 0x5163A5C));
-                _game.Teams.Add(new Team("Home", -1400, _baseAddress + 0x4CEC530, _baseAddress + 0x5C8E7A4, _baseAddress + 0x51639C0));
+                _game.Teams.Add(new Team("Away",   528, _baseAddress + 0x4D08F88, _baseAddress + 0x5CAC2FC, _baseAddress + 0x5163A5C));
+                _game.Teams.Add(new Team("Home", -1400, _baseAddress + 0x4D08FB8, _baseAddress + 0x5CAB2A4, _baseAddress + 0x51639C0));
 
                 foreach (var team in _game.Teams)
                 {
