@@ -251,8 +251,8 @@ namespace _2k21Extractor
                 _game.Teams.Clear();
                 
                 //                               Score                   OnFloor                 Team Name               Def Settings
-                _game.Teams.Add(new Team("Away",   528, _baseAddress + 0x4D08F88, _baseAddress + 0x5CAC2FC, _baseAddress + 0x5163A5C));
-                _game.Teams.Add(new Team("Home", -1400, _baseAddress + 0x4D08FB8, _baseAddress + 0x5CAB2A4, _baseAddress + 0x51639C0));
+                _game.Teams.Add(new Team("Away",   528, _baseAddress + 0x4D0AF88, _baseAddress + 0x5CAE37C, _baseAddress + 0x5163A5C));
+                _game.Teams.Add(new Team("Home", -1400, _baseAddress + 0x4D0AFB0, _baseAddress + 0x5CAD324, _baseAddress + 0x51639C0));
 
                 foreach (var team in _game.Teams)
                 {
@@ -439,7 +439,7 @@ namespace _2k21Extractor
                     
                     //Get Scores
                     var scoreBuffer = new byte[1];
-                    //This address hold the final score each quarter is offset by AC from this so we will add AC for each Quarter
+                    //This address hold the final score each quarter is offset by AC from this so we will add AC for each Quarter 
                     //We could add all of these to the offset loop instead of getting them individually, but would need to choose how to put them into the score class
                     var scoreAddress = new IntPtr(team.FinalScorePointer);
                     ReadProcessMemory(processHandle, scoreAddress, scoreBuffer, scoreBuffer.Length, out bytesRead);
