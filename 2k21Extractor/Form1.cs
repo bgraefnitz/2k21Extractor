@@ -961,5 +961,13 @@ namespace _2k21Extractor
             value = array[0];
             return value;
         }
+
+        private void btnGameInput_Click(object sender, EventArgs e)
+        {
+            Thread.Sleep(2000);
+            var input = new Input();
+            //input.StartGame();
+            input.RestartGame();
+        }
     }
 }

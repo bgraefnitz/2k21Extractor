@@ -68,5 +68,38 @@ namespace _2k21Extractor.Properties {
                 return ((string)(this["GameDataServiceUri"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
+        public int InterMenuDelay {
+            get {
+                return ((int)(this["InterMenuDelay"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        public int IntraMenuDelay {
+            get {
+                return ((int)(this["IntraMenuDelay"]));
+            }
+            set {
+                this["IntraMenuDelay"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("50")]
+        public int KeyUpDelay {
+            get {
+                return ((int)(this["KeyUpDelay"]));
+            }
+            set {
+                this["KeyUpDelay"] = value;
+            }
+        }
     }
 }

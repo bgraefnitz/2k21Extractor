@@ -34,6 +34,7 @@
             this.btnFolder = new System.Windows.Forms.Button();
             this.chkAutoOpen = new System.Windows.Forms.CheckBox();
             this.chkAutoClose = new System.Windows.Forms.CheckBox();
+            this.btnGameInput = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnExport
@@ -86,11 +87,22 @@
             this.chkAutoClose.UseVisualStyleBackColor = true;
             this.chkAutoClose.CheckedChanged += new System.EventHandler(this.chkAutoClose_CheckedChanged);
             // 
+            // btnGameInput
+            // 
+            this.btnGameInput.Location = new System.Drawing.Point(63, 13);
+            this.btnGameInput.Name = "btnGameInput";
+            this.btnGameInput.Size = new System.Drawing.Size(75, 23);
+            this.btnGameInput.TabIndex = 8;
+            this.btnGameInput.Text = "Game Input";
+            this.btnGameInput.UseVisualStyleBackColor = true;
+            this.btnGameInput.Click += new System.EventHandler(this.btnGameInput_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(265, 163);
+            this.Controls.Add(this.btnGameInput);
             this.Controls.Add(this.chkAutoClose);
             this.Controls.Add(this.chkAutoOpen);
             this.Controls.Add(this.btnFolder);
@@ -111,6 +123,7 @@
         private System.Windows.Forms.Button btnFolder;
         private System.Windows.Forms.CheckBox chkAutoOpen;
         private System.Windows.Forms.CheckBox chkAutoClose;
+        private System.Windows.Forms.Button btnGameInput;
     }
 }
 
