@@ -16,18 +16,23 @@ namespace _2k21Extractor
             keyboard = new Keyboard();
         }
 
-        public void RestartGame()
+        public void RestartGame(int homeTeamId, int awayTeamId)
         {
             QuitCompletedGame();
-            StartGame();
+            StartGame(homeTeamId, awayTeamId);
         }
 
-        public void StartGame()
+        public void StartGame(int homeTeamId, int awayTeamId)
         {
             //this assumes starting within play now screen
             GoToQuickGame();
             LoadRosters();
-            SelectTeams();
+            SelectTeams(homeTeamId, awayTeamId);
+        }
+
+        public void Continue()
+        {
+            SendKey(ScanCodeShort.SPACE);
         }
 
         private void GoToQuickGame()
@@ -57,14 +62,12 @@ namespace _2k21Extractor
             //TODO: figure out non-top roster loading
         }
 
-        private void SelectTeams()
+        private void SelectTeams(int homeTeamId, int awayTeamId)
         {
             //move to home team (defaults to center after roster load)
             SendKey(ScanCodeShort.KEY_D);
             //choose home team (defaults to sixers after roster load - so base 0)
-            //TODO: figure out dynamic team loading
-            var homeTeam = Teams.GetTeam("Nets");
-            for(var i = 0; i < homeTeam.TeamId;  i++)
+            for(var i = 0; i < homeTeamId;  i++)
             {
                 SendKey(ScanCodeShort.SQUARE_BRACKET_RIGHT);
             }
@@ -73,9 +76,7 @@ namespace _2k21Extractor
             SendKey(ScanCodeShort.KEY_A);
             //choose away team (defaults to bucks after roster load - so base 1 - move so it is base 0)
             SendKey(ScanCodeShort.SQUARE_BRACKET_LEFT);
-            //TODO: figure out dynamic team loading
-            var awayTeam = Teams.GetTeam("Hawks");
-            for (var i = 0; i < awayTeam.TeamId; i++)
+            for (var i = 0; i < awayTeamId; i++)
             {
                 SendKey(ScanCodeShort.SQUARE_BRACKET_RIGHT);
             }

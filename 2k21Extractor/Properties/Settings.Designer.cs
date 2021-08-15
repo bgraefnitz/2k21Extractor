@@ -101,5 +101,17 @@ namespace _2k21Extractor.Properties {
                 this["KeyUpDelay"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AutoReplay {
+            get {
+                return ((bool)(this["AutoReplay"]));
+            }
+            set {
+                this["AutoReplay"] = value;
+            }
+        }
     }
 }

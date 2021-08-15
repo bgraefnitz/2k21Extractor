@@ -50,8 +50,8 @@ namespace _2k21Extractor
 
     public class SelectableTeam
     {
-        public string Name;
-        public int TeamId;
+        public string Name { get; set; }
+        public int TeamId { get; set; }
         public SelectableTeam(string name, int teamId)
         {
             Name = name;

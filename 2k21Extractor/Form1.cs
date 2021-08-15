@@ -99,26 +99,34 @@ namespace _2k21Extractor
         {
             InitializeComponent();
 
+            cboAwayTeam.DataSource = Teams.TeamList.ToList();
+            cboAwayTeam.DisplayMember = "Name";
+            cboAwayTeam.ValueMember = "TeamId";
+            cboHomeTeam.DataSource = Teams.TeamList.ToList();
+            cboHomeTeam.DisplayMember = "Name";
+            cboHomeTeam.ValueMember = "TeamId";
+
             txtFolder.Text = Properties.Settings.Default.FilePath;
             chkAutoOpen.Checked = Properties.Settings.Default.AutoOpenHTML;
-            chkAutoOpen.Checked = Properties.Settings.Default.AutoClose;
+            chkAutoClose.Checked = Properties.Settings.Default.AutoClose;
+            chkAutoReplay.Checked = Properties.Settings.Default.AutoReplay;
         }
 
         //TODO: Separate "get value from memory" stuff into a separate method
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            //Setup the game, teams and players
-            var setupResult = SetupGame();
+            //Get export path from text box and set base file name for files to be written
+            //For export file path, look at storing in registry so user doesn't have to reselect every time?
+            var exportFilePath = txtFolder.Text;
 
-            if (setupResult)
+            //this logic could be better, but make sure a directory is selected
+            if (exportFilePath != null)
             {
-                //Get export path from text box and set base file name for files to be written
-                //For export file path, look at storing in registry so user doesn't have to reselect every time?
-                var exportFilePath = txtFolder.Text;
+                //Setup the game, teams and players
+                var setupResult = SetupGame();
 
-                //this logic could be better, but make sure a directory is selected
-                if (exportFilePath != null)
+                if (setupResult)
                 {
                     if (!exportFilePath.EndsWith(@"\"))
                         exportFilePath += @"\";
@@ -157,7 +165,7 @@ namespace _2k21Extractor
                                 lastExport = DateTime.Now;
                             }
 
-                            //check that if there is no time left and scores match, that it actually stays that way!
+                            //check that if there is no time left and scores don't match, that it actually stays that way!
                             if (_game.GameTime == "End of game check")
                             {
                                 //check every 1 second for 60 seconds to make sure the game is actually ended
@@ -170,7 +178,7 @@ namespace _2k21Extractor
                                     GetStats(prevGame);
                                     checkCount++;
                                 }
-                                //if after 60 seconds we're still checking to see if the game is over, that means the score is still tied with no time on the clock, so it's over
+                                //if after 60 seconds we're still checking to see if the game is over, that means the score is not tied with no time on the clock, so it's over
                                 if (_game.GameTime == "End of game check")
                                     _game.GameEnded = true;
                             }
@@ -205,6 +213,7 @@ namespace _2k21Extractor
                         ExportIndex(exportFilePath, "html", _game.GameTime, finalBoxPath, finalPlayByPlayPath);
                     }
 
+
                     //If the auto-close option is selected, then close the game and then the extractor
                     if (chkAutoClose.Checked)
                     {
@@ -213,12 +222,42 @@ namespace _2k21Extractor
                             firstOrDefault.Kill();
                         Close();
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Select a valid directory");
+                    var input = new Input();
+                    if (chkAutoReplay.Checked)
+                    {
+                        //wait 30 more seconds to make sure we're at the end game screen (don't want to hit a button to get there because if we already are it will go into box scores
+                        Thread.Sleep(20000);
+                        input.RestartGame((int)cboHomeTeam.SelectedValue, (int)cboAwayTeam.SelectedValue);
+                        WaitOnGameLoaded();
+                        btnExport_Click(this,null);
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("Select a valid directory");
+            }
+        }
+
+        private void WaitOnGameLoaded()
+        {
+            //wait 1 min while game is setup and teams are chosen
+            Thread.Sleep(60000);
+            //hit space bar so we don't have to wait on 2ktv forever
+            var input = new Input();
+            input.Continue();
+            //loop to check game clock is set to 1st quarter and default start time for 1 minute - if it hasn't been after a minute then something has probably gone wrong and we'll just continue forward
+            var checkCount = 0;
+            GetStats(prevGame);
+            while ((_game.CurrentQuarter != 1 || _game.SecondsRemaining != Game.StartingQuarterTime) && checkCount <= 60)
+            {
+                Thread.Sleep(1000);
+                GetStats(prevGame);
+                checkCount++;
+            }
+            //we have either waited until the game has loaded or it's not going to happen - wait a bit more to make sure all data is loaded and not just game clock, and then end the wait
+            Thread.Sleep(2000);
+            return;
         }
 
         private void btnFolder_Click(object sender, EventArgs e)
@@ -964,10 +1003,22 @@ namespace _2k21Extractor
 
         private void btnGameInput_Click(object sender, EventArgs e)
         {
-            Thread.Sleep(2000);
+            //wait for user to switch to 2k as active window
+            Thread.Sleep(5000);
+
+            //run start game procedure
             var input = new Input();
-            //input.StartGame();
-            input.RestartGame();
+            input.StartGame((int)cboHomeTeam.SelectedValue, (int)cboAwayTeam.SelectedValue);
+
+            //wait for game to start and then start extractor
+            WaitOnGameLoaded();
+            btnExport_Click(this, null);
+        }
+
+        private void chkAutoReplay_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.AutoReplay = chkAutoReplay.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

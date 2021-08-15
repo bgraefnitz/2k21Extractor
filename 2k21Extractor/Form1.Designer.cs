@@ -35,11 +35,16 @@
             this.chkAutoOpen = new System.Windows.Forms.CheckBox();
             this.chkAutoClose = new System.Windows.Forms.CheckBox();
             this.btnGameInput = new System.Windows.Forms.Button();
+            this.chkAutoReplay = new System.Windows.Forms.CheckBox();
+            this.cboAwayTeam = new System.Windows.Forms.ComboBox();
+            this.cboHomeTeam = new System.Windows.Forms.ComboBox();
+            this.lblAwayTeam = new System.Windows.Forms.Label();
+            this.lblHomeTeam = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(154, 76);
+            this.btnExport.Location = new System.Drawing.Point(154, 38);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 23);
             this.btnExport.TabIndex = 0;
@@ -49,7 +54,7 @@
             // 
             // txtFolder
             // 
-            this.txtFolder.Location = new System.Drawing.Point(12, 50);
+            this.txtFolder.Location = new System.Drawing.Point(12, 12);
             this.txtFolder.Name = "txtFolder";
             this.txtFolder.Size = new System.Drawing.Size(186, 20);
             this.txtFolder.TabIndex = 1;
@@ -57,7 +62,7 @@
             // 
             // btnFolder
             // 
-            this.btnFolder.Location = new System.Drawing.Point(204, 47);
+            this.btnFolder.Location = new System.Drawing.Point(204, 9);
             this.btnFolder.Name = "btnFolder";
             this.btnFolder.Size = new System.Drawing.Size(25, 23);
             this.btnFolder.TabIndex = 2;
@@ -68,7 +73,7 @@
             // chkAutoOpen
             // 
             this.chkAutoOpen.AutoSize = true;
-            this.chkAutoOpen.Location = new System.Drawing.Point(12, 110);
+            this.chkAutoOpen.Location = new System.Drawing.Point(12, 72);
             this.chkAutoOpen.Name = "chkAutoOpen";
             this.chkAutoOpen.Size = new System.Drawing.Size(127, 17);
             this.chkAutoOpen.TabIndex = 6;
@@ -79,7 +84,7 @@
             // chkAutoClose
             // 
             this.chkAutoClose.AutoSize = true;
-            this.chkAutoClose.Location = new System.Drawing.Point(12, 133);
+            this.chkAutoClose.Location = new System.Drawing.Point(12, 95);
             this.chkAutoClose.Name = "chkAutoClose";
             this.chkAutoClose.Size = new System.Drawing.Size(214, 17);
             this.chkAutoClose.TabIndex = 7;
@@ -89,19 +94,69 @@
             // 
             // btnGameInput
             // 
-            this.btnGameInput.Location = new System.Drawing.Point(63, 13);
+            this.btnGameInput.Location = new System.Drawing.Point(154, 172);
             this.btnGameInput.Name = "btnGameInput";
             this.btnGameInput.Size = new System.Drawing.Size(75, 23);
             this.btnGameInput.TabIndex = 8;
-            this.btnGameInput.Text = "Game Input";
+            this.btnGameInput.Text = "Auto Start";
             this.btnGameInput.UseVisualStyleBackColor = true;
             this.btnGameInput.Click += new System.EventHandler(this.btnGameInput_Click);
+            // 
+            // chkAutoReplay
+            // 
+            this.chkAutoReplay.AutoSize = true;
+            this.chkAutoReplay.Location = new System.Drawing.Point(12, 181);
+            this.chkAutoReplay.Name = "chkAutoReplay";
+            this.chkAutoReplay.Size = new System.Drawing.Size(84, 17);
+            this.chkAutoReplay.TabIndex = 9;
+            this.chkAutoReplay.Text = "Auto Replay";
+            this.chkAutoReplay.UseVisualStyleBackColor = true;
+            this.chkAutoReplay.CheckedChanged += new System.EventHandler(this.chkAutoReplay_CheckedChanged);
+            // 
+            // cboAwayTeam
+            // 
+            this.cboAwayTeam.FormattingEnabled = true;
+            this.cboAwayTeam.Location = new System.Drawing.Point(85, 118);
+            this.cboAwayTeam.Name = "cboAwayTeam";
+            this.cboAwayTeam.Size = new System.Drawing.Size(141, 21);
+            this.cboAwayTeam.TabIndex = 10;
+            // 
+            // cboHomeTeam
+            // 
+            this.cboHomeTeam.FormattingEnabled = true;
+            this.cboHomeTeam.Location = new System.Drawing.Point(87, 145);
+            this.cboHomeTeam.Name = "cboHomeTeam";
+            this.cboHomeTeam.Size = new System.Drawing.Size(139, 21);
+            this.cboHomeTeam.TabIndex = 11;
+            // 
+            // lblAwayTeam
+            // 
+            this.lblAwayTeam.AutoSize = true;
+            this.lblAwayTeam.Location = new System.Drawing.Point(13, 125);
+            this.lblAwayTeam.Name = "lblAwayTeam";
+            this.lblAwayTeam.Size = new System.Drawing.Size(66, 13);
+            this.lblAwayTeam.TabIndex = 12;
+            this.lblAwayTeam.Text = "Away Team:";
+            // 
+            // lblHomeTeam
+            // 
+            this.lblHomeTeam.AutoSize = true;
+            this.lblHomeTeam.Location = new System.Drawing.Point(13, 153);
+            this.lblHomeTeam.Name = "lblHomeTeam";
+            this.lblHomeTeam.Size = new System.Drawing.Size(68, 13);
+            this.lblHomeTeam.TabIndex = 13;
+            this.lblHomeTeam.Text = "Home Team:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(265, 163);
+            this.ClientSize = new System.Drawing.Size(238, 228);
+            this.Controls.Add(this.lblHomeTeam);
+            this.Controls.Add(this.lblAwayTeam);
+            this.Controls.Add(this.cboHomeTeam);
+            this.Controls.Add(this.cboAwayTeam);
+            this.Controls.Add(this.chkAutoReplay);
             this.Controls.Add(this.btnGameInput);
             this.Controls.Add(this.chkAutoClose);
             this.Controls.Add(this.chkAutoOpen);
@@ -124,6 +179,11 @@
         private System.Windows.Forms.CheckBox chkAutoOpen;
         private System.Windows.Forms.CheckBox chkAutoClose;
         private System.Windows.Forms.Button btnGameInput;
+        private System.Windows.Forms.CheckBox chkAutoReplay;
+        private System.Windows.Forms.ComboBox cboAwayTeam;
+        private System.Windows.Forms.ComboBox cboHomeTeam;
+        private System.Windows.Forms.Label lblAwayTeam;
+        private System.Windows.Forms.Label lblHomeTeam;
     }
 }
 
